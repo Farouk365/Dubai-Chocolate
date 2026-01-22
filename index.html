@@ -632,6 +632,7 @@
         .sizes-header {
             text-align: center;
             margin-bottom: 2.5rem;
+            padding-top: 3rem;
         }
 
         .back-btn {
@@ -1123,7 +1124,7 @@
     <!-- Sizes Section (Hidden by default) -->
     <div class="sizes-section" id="sizes-section">
         <div class="sizes-header">
-            <button class="back-btn" id="back-to-main">← Back to Products</button>
+            <button class="back-btn" id="back-to-main" type="button">← Back to Products</button>
             <h2 class="section-title">Available Sizes</h2>
             <p class="section-subtitle">Choose the perfect size for your needs</p>
         </div>
@@ -1263,9 +1264,10 @@
             });
 
             // Back button functionality
-            document.getElementById('back-to-main').addEventListener('click', function() {
+                document.getElementById('back-to-main').addEventListener('click', function(e) {
+                e.preventDefault(); // Add this line
                 hideSizesSection();
-            });
+                });
 
             // Show sizes section
             function showSizesSection(productName, productType, productDescription) {
