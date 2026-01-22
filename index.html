@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai Chocolate - Premium Artisan Chocolates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-brown: #3E2723;
+            --milk-chocolate: #6F4E37;
+            --light-brown: #A0522D;
+            --cream: #FFF8E1;
+            --white: #FFFFFF;
+            --text-dark: #2C1810;
+            --text-light: #8D6E63;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 80vh;
+            min-height: 600px;
+            background: url('royal s.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23D4AF37" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%23D4AF37" opacity="0.4"/><circle cx="40" cy="80" r="2.5" fill="%23D4AF37" opacity="0.2"/><circle cx="70" cy="70" r="1" fill="%23D4AF37" opacity="0.5"/></svg>') repeat;
+            animation: float 20s infinite linear;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            color: var(--white);
+            max-width: 800px;
+            padding: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .syria-availability {
+            background: linear-gradient(90deg, var(--primary-gold), var(--milk-chocolate));
+            color: var(--white);
+            text-align: center;
+            padding: 0.8rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            font-size: 0.9rem;
+            z-index: 1001;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(62, 39, 35, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.6rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(62, 39, 35, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.3rem 0;
+        }
+
+        .logo:hover {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: var(--primary-gold);
+            color: var(--dark-brown);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            border-color: var(--primary-gold);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-brown);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--primary-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        /* 2-column layout for most sections */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 3-column layout for cream fillings */
+        .cream-fillings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid,
+            .cream-fillings-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--milk-chocolate));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Updated product images with actual images */
+        .product-image {
+            height: 425px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Specific product images */
+        .milk-pistachio .product-image {
+            background-image: url('Milk Chocolate Pistachio.jpg');
+            background-size: contain;
+            background-color: var(--cream);
+        }
+
+        .white-pistachio .product-image {
+            background-image: url('White Chocolate Pistachio.jpg');
+            background-size: contain;
+            background-color: var(--cream);
+        }
+
+        .pink-cotton-candy .product-image {
+            background-image: url('cotton candy s.png');
+            background-size: contain;
+            background-color: var(--cream);
+            background-size: auto 125%;
+            background-position: center center;
+        }
+
+        .mango-passion .product-image {
+            background-image: url('mango s.png');
+            background-size: contain;
+            background-color: var(--cream);
+        }
+
+        .pistachio-cream .product-image {
+            background-image: url('Pistachio Cream.jpg');
+        }
+
+        .salted-caramel .product-image {
+            background-image: url('Salted Caramel Cream.jpg');
+        }
+
+        .peanut-butter .product-image {
+            background-image: url('Peanut Butter Cream.jpg');
+        }
+
+        .kinder-cream .product-image {
+            background-image: url('Kinder Cream.jpg');
+        }
+
+        .speculoos-cream .product-image {
+            background-image: url('Speculoos Cream.jpg');
+        }
+
+        .white-chips .product-image {
+            background-image: url('White.jpg');
+        }
+
+        .milk-chips .product-image {
+            background-image: url('Milk.jpg');
+        }
+
+        .pistachio-mini .product-image {
+            background: linear-gradient(45deg, var(--primary-gold), var(--milk-chocolate));
+        }
+
+        .kunafa-speculoos .product-image {
+            background: linear-gradient(45deg, var(--primary-gold), var(--milk-chocolate));
+        }
+
+        .mango-mini .product-image {
+            background: linear-gradient(45deg, var(--primary-gold), var(--milk-chocolate));
+        }
+
+        .cheesecake-strawberry .product-image {
+            background: linear-gradient(45deg, var(--primary-gold), var(--milk-chocolate));
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .unavailable {
+            background: var(--light-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 6px;
+            font-weight: bold;
+            animation: blink 1.5s infinite;
+            font-size: 0.9rem;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.7; }
+        }
+
+        .size-btn {
+            width: 100%;
+            padding: 9px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--milk-chocolate));
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: auto; /* Pushes button to bottom */
+        }
+
+        .size-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .about {
+            background: var(--cream);
+            padding: 4rem 1.5rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .about-highlight {
+            background: linear-gradient(135deg, var(--primary-gold), var(--milk-chocolate));
+            color: var(--white);
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .features {
+            background: var(--cream);
+            padding: 4rem 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            justify-items: center;
+        }
+
+        .feature {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-gold);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(111, 78, 55, 0.1));
+            border-radius: 12px;
+        }
+
+        .feature h3 {
+            color: var(--dark-brown);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, var(--dark-brown), var(--milk-chocolate));
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            justify-items: center;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+        }
+
+        footer {
+            background: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Sizes Section Styles */
+        .sizes-section {
+            display: none;
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sizes-section.active {
+            display: block;
+        }
+
+        .sizes-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-gold);
+            color: var(--dark-brown);
+        }
+
+        .current-product {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .current-product-info {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .current-product-name {
+            font-size: 2.2rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .current-product-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .sizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            justify-items: center;
+        }
+
+        .size-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .size-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-gold);
+        }
+
+        .size-card-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--milk-chocolate), var(--light-brown));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .size-card-image::after {
+            content: '🍫';
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.3;
+            animation: rotate 10s linear infinite;
+        }
+
+        .size-card-image-content {
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .size-image-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .size-image-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .size-card-body {
+            padding: 1.5rem;
+        }
+
+        .size-weight {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .size-name {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .size-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            min-height: 80px;
+            font-size: 0.95rem;
+        }
+
+        /* Chocolate Chips specific styles */
+        .chocolate-chips {
+            background: var(--cream);
+            padding: 4rem 1.5rem;
+        }
+
+        /* Mini Bars specific styles */
+        .mini-bars {
+            background: var(--cream);
+            padding: 4rem 1.5rem;
+        }
+
+        /* Chocolate Bars background */
+        #chocolate-bars {
+            background: var(--cream);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(62, 39, 35, 0.98);
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .product-grid,
+            .cream-fillings-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .sizes-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .current-product-name {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Dubai Chocolate</a>
+            <button class="mobile-menu-btn" id="mobile-menu">☰</button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#chocolate-bars">Chocolate Bars</a></li>
+                <li><a href="#cream-fillings">Cream Fillings</a></li>
+                <li><a href="#chocolate-chips">Chocolate Chips</a></li>
+                <li><a href="#mini-bars">Mini Bars</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>&nbsp;</h1>
+                <!-- Text above collection button removed -->
+                <!-- Collection button removed -->
+            </div>
+        </section>
+
+        <section id="chocolate-bars">
+            <h2 class="section-title fade-in">Premium Chocolate Bars</h2>
+            <p class="section-subtitle fade-in">Indulge in our handcrafted chocolate bars made from the finest cocoa</p>
+            
+            <div class="product-grid">
+                <div class="product-card fade-in milk-pistachio">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Milk Chocolate Pistachio & Kunafa</h3>
+                        <p class="product-description">Perfect blend of creamy milk chocolate with premium pistachio pieces and kunafa crunch for an unforgettable taste experience.</p>
+                        <button class="size-btn" data-product="Milk Chocolate Pistachio & Kunafa" data-type="Chocolate Bar" data-description="Perfect blend of creamy milk chocolate with premium pistachio pieces and kunafa crunch for an unforgettable taste experience.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in white-pistachio">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">White Chocolate Pistachio & Kunafa</h3>
+                        <p class="product-description">Velvety white chocolate with crunchy pistachio pieces and kunafa bits for a luxurious treat.</p>
+                        <button class="size-btn" data-product="White Chocolate Pistachio & Kunafa" data-type="Chocolate Bar" data-description="Velvety white chocolate with crunchy pistachio pieces and kunafa bits for a luxurious treat.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in pink-cotton-candy">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pink Chocolate Cotton Candy</h3>
+                        <p class="product-description">Unique pink-infused chocolate with colorful cotton candy bits for a playful experience.</p>
+                        <button class="size-btn" data-product="Pink Chocolate Cotton Candy" data-type="Chocolate Bar" data-description="Unique pink-infused chocolate with colorful cotton candy bits for a playful experience.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in mango-passion">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">White Chocolate Mango & Passion Fruit</h3>
+                        <p class="product-description">Exotic white chocolate blended with mango pieces and passion fruit for a tropical twist.</p>
+                        <button class="size-btn" data-product="White Chocolate Mango & Passion Fruit" data-type="Chocolate Bar" data-description="Exotic white chocolate blended with mango pieces and passion fruit for a tropical twist.">Choose Size</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cream-fillings" class="about">
+            <h2 class="section-title fade-in">Luxury Cream Fillings</h2>
+            <p class="section-subtitle fade-in">Discover our premium cream fillings designed to elevate your chocolate experience</p>
+            
+            <div class="cream-fillings-grid">
+                <div class="product-card fade-in pistachio-cream">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pistachio Cream</h3>
+                        <p class="product-description">Rich pistachio cream with nutty flavor and silky smooth texture.</p>
+                        <button class="size-btn" data-product="Pistachio Cream" data-type="Cream Filling" data-description="Rich pistachio cream with nutty flavor and silky smooth texture.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in salted-caramel">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Salted Caramel Cream</h3>
+                        <p class="product-description">Gourmet salted caramel cream with the perfect balance of sweet and salty notes.</p>
+                        <button class="size-btn" data-product="Salted Caramel Cream" data-type="Cream Filling" data-description="Gourmet salted caramel cream with the perfect balance of sweet and salty notes.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in peanut-butter">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Peanut Butter Spread Cream</h3>
+                        <p class="product-description">Creamy, smooth peanut butter spread cream that perfectly complements any chocolate base.</p>
+                        <button class="size-btn" data-product="Peanut Butter Spread Cream" data-type="Cream Filling" data-description="Creamy, smooth peanut butter spread cream that perfectly complements any chocolate base.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in kinder-cream">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Kinder Cream</h3>
+                        <p class="product-description">Classic creamy filling reminiscent of the beloved Kinder chocolate experience.</p>
+                        <button class="size-btn" data-product="Kinder Cream" data-type="Cream Filling" data-description="Classic creamy filling reminiscent of the beloved Kinder chocolate experience.">Choose Size</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in speculoos-cream">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Speculoos Cream</h3>
+                        <p class="product-description">Delicious speculoos cream with caramelized sugar flavors.</p>
+                        <button class="size-btn" data-product="Speculoos Cream" data-type="Cream Filling" data-description="Delicious speculoos cream with caramelized sugar flavors.">Choose Size</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chocolate-chips" class="chocolate-chips">
+            <h2 class="section-title fade-in">Premium Chocolate Chips</h2>
+            <p class="section-subtitle fade-in">Perfect for baking, desserts, and creative culinary creations</p>
+            
+            <div class="product-grid">
+                <div class="product-card fade-in white-chips">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">White Chocolate Chips</h3>
+                        <p class="product-description">Premium white chocolate chips perfect for cookies, muffins, and all your baking needs. Creamy and smooth texture.</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in milk-chips">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Milk Chocolate Chips</h3>
+                        <p class="product-description">Classic milk chocolate chips with rich cocoa flavor. Ideal for cookies, brownies, and chocolate chip pancakes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mini-bars" class="mini-bars">
+            <h2 class="section-title fade-in">Premium Mini Bars</h2>
+            <p class="section-subtitle fade-in">Delightful bite-sized chocolate squares perfect for tasting and sharing</p>
+            
+            <div class="product-grid">
+                <div class="product-card fade-in pistachio-mini">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pistachio & Kunafa Mini Bars</h3>
+                        <p class="product-description">Bite-sized squares featuring our signature pistachio and kunafa combination in creamy milk chocolate.</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in kunafa-speculoos">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Kunafa & Speculoos Cream Mini Bars</h3>
+                        <p class="product-description">Mini bars combining kunafa crunch with warm speculoos cream in white chocolate.</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in mango-mini">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Mango & Passion Fruit Mini Bars</h3>
+                        <p class="product-description">Tropical mini bars with mango pieces and passion fruit in creamy white chocolate.</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in cheesecake-strawberry">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Cheesecake & Strawberry Cream Mini Bars</h3>
+                        <p class="product-description">Delicious mini bars featuring cheesecake cream with strawberry swirls in milk chocolate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="features">
+            <h2 class="section-title fade-in">Why Choose Dubai Chocolate?</h2>
+            <p class="section-subtitle fade-in">Crafting excellence in every chocolate since our inception</p>
+            
+            <div class="about-highlight fade-in">
+                🇦🇪 Crafted in the heart of Dubai where Dubai chocolate crafting began with pistachio force, our chocolates represent the perfect fusion of tradition and modernity. We bring you Dubai chocolate experiences that are now available throughout Syria.
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature fade-in">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Premium Quality</h3>
+                    <p>We source only the finest cocoa beans and ingredients to create exceptional chocolates that delight the senses.</p>
+                </div>
+                
+                <div class="feature fade-in">
+                    <span class="feature-icon">👨‍🍳</span>
+                    <h3>Artisan Craftsmanship</h3>
+                    <p>Each chocolate is meticulously crafted by our expert chocolatiers with passion and attention to detail.</p>
+                </div>
+                
+                <div class="feature fade-in">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Premium Ingredients</h3>
+                    <p>We pride ourselves on using premium ingredients that reflect the rich flavors of our signature chocolates.</p>
+                </div>
+                
+                <div class="feature fade-in">
+                    <span class="feature-icon">🎁</span>
+                    <h3>Elegant Packaging</h3>
+                    <p>Our chocolates come in sophisticated packaging, perfect for gifting or indulging in a moment of luxury.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-content">
+                <h2 class="section-title fade-in" style="color: var(--white);">Get in Touch</h2>
+                <p class="section-subtitle" style="color: var(--white);">We'd love to hear from you and help you discover the perfect chocolate experience</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <h3>📞 Phone</h3>
+                        <p></p>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <h3>📧 Email</h3>
+                        <p></p>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn">Order Now</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sizes Section (Hidden by default) -->
+    <div class="sizes-section" id="sizes-section">
+        <div class="sizes-header">
+            <button class="back-btn" id="back-to-main">← Back to Products</button>
+            <h2 class="section-title">Available Sizes</h2>
+            <p class="section-subtitle">Choose the perfect size for your needs</p>
+        </div>
+        
+        <div class="current-product">
+            <div class="current-product-info">
+                <h3 class="current-product-name" id="size-product-name">Milk Chocolate Pistachio</h3>
+                <p class="current-product-description" id="size-product-description"></p>
+                <p class="current-product-type" id="size-product-type" style="color: var(--primary-gold); font-weight: bold;"></p>
+            </div>
+        </div>
+        
+        <div class="sizes-grid" id="sizes-container">
+            <!-- Sizes will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Dubai Chocolate. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">📱</a>
+                <a href="#">📷</a>
+                <a href="#">🐦</a>
+                <a href="#">📘</a>
+            </div>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Premium artisan chocolates crafted with love in Dubai</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+                
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
+            // Fade-in animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Size data for chocolate bars
+            const chocolateBarSizes = [
+                {
+                    weight: "37g",
+                    name: "Trial Size Bar",
+                    description: "Perfect for a quick taste test or a small treat. Ideal for discovering new flavors without commitment.",
+                    imageTitle: "37g Bar",
+                    imageSubtitle: "Trial Size"
+                },
+                {
+                    weight: "60g",
+                    name: "Personal Treat Bar",
+                    description: "Just the right amount for one person to enjoy. Perfect for a personal indulgence or a small gift.",
+                    imageTitle: "60g Bar",
+                    imageSubtitle: "Personal Treat"
+                },
+                {
+                    weight: "100g",
+                    name: "Sharing Size Bar",
+                    description: "Great for sharing with family or friends. Perfect for movie nights or small gatherings.",
+                    imageTitle: "100g Bar",
+                    imageSubtitle: "Sharing Size"
+                },
+                {
+                    weight: "200g",
+                    name: "Family Pack Bar",
+                    description: "Plenty for the whole family to enjoy. Ideal for special occasions or as a generous gift.",
+                    imageTitle: "200g Bar",
+                    imageSubtitle: "Family Pack"
+                }
+            ];
+
+            // Size data for cream fillings
+            const creamFillingSizes = [
+                {
+                    weight: "1kg",
+                    name: "Professional Size Filling",
+                    description: "Great for regular use in baking and confectionery. Perfect for small businesses and avid bakers.",
+                    imageTitle: "1kg Pack",
+                    imageSubtitle: "Professional Size"
+                },
+                {
+                    weight: "5kg",
+                    name: "Commercial Size Filling",
+                    description: "The ultimate size for professional chefs and large-scale production. Best value for high-volume use.",
+                    imageTitle: "5kg Pack",
+                    imageSubtitle: "Commercial Size"
+                }
+            ];
+
+            // Handle size button clicks
+            document.querySelectorAll('.size-btn:not([disabled])').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.getAttribute('data-product');
+                    const productType = this.getAttribute('data-type');
+                    const productDescription = this.getAttribute('data-description');
+                    
+                    showSizesSection(productName, productType, productDescription);
+                });
+            });
+
+            // Back button functionality
+            document.getElementById('back-to-main').addEventListener('click', function() {
+                hideSizesSection();
+            });
+
+            // Show sizes section
+            function showSizesSection(productName, productType, productDescription) {
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('sizes-section').classList.add('active');
+                
+                // Update product info
+                document.getElementById('size-product-name').textContent = productName;
+                document.getElementById('size-product-description').textContent = productDescription;
+                document.getElementById('size-product-type').textContent = productType;
+                
+                // Clear previous sizes
+                const sizesContainer = document.getElementById('sizes-container');
+                sizesContainer.innerHTML = '';
+                
+                // Get appropriate sizes based on product type
+                let sizes;
+                if (productType === 'Chocolate Bar') {
+                    sizes = chocolateBarSizes;
+                } else if (productType === 'Cream Filling') {
+                    sizes = creamFillingSizes;
+                }
+                
+                // Add size cards with rotating chocolate images
+                sizes.forEach(size => {
+                    const sizeCard = document.createElement('div');
+                    sizeCard.className = 'size-card fade-in';
+                    
+                    sizeCard.innerHTML = `
+                        <div class="size-card-image">
+                            <div class="size-card-image-content">
+                                <div class="size-image-title">${size.imageTitle}</div>
+                                <div class="size-image-subtitle">${size.imageSubtitle}</div>
+                            </div>
+                        </div>
+                        <div class="size-card-body">
+                            <div class="size-weight">${size.weight}</div>
+                            <div class="size-name">${size.name}</div>
+                            <p class="size-description">${size.description}</p>
+                        </div>
+                    `;
+                    
+                    sizesContainer.appendChild(sizeCard);
+                });
+                
+                // Scroll to top of sizes section
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Trigger fade-in animations for new size cards
+                setTimeout(() => {
+                    document.querySelectorAll('#sizes-container .fade-in').forEach(el => {
+                        observer.observe(el);
+                    });
+                }, 100);
+            }
+
+            // Hide sizes section
+            function hideSizesSection() {
+                document.getElementById('sizes-section').classList.remove('active');
+                document.getElementById('main-content').style.display = 'block';
+                
+                // Scroll to chocolate bars section
+                document.getElementById('chocolate-bars').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Handle navigation clicks to ensure smooth scrolling
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        
+                        if (document.getElementById('sizes-section').classList.contains('active')) {
+                            hideSizesSection();
+                            return;
+                        }
+                        
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            // Add offset for mobile menu
+                            const offset = window.innerWidth <= 768 ? 100 : 80;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
